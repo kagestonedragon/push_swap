@@ -15,6 +15,10 @@
 
 int			main(int argc, char **argv)
 {
-	printf("n = %d, d = %d\n", validation_number(argv), validation_duplicate(argv));
+    t_list  *list;
+
+    list = create_stack(argv);
+    list = flag_ra(list);
+    print(list);
 	return (0);
 }

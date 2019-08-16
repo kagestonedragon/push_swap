@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/push_swap.h"
+#include "../includes/errors.h"
+
 int		validation_number(char **argv)
 {
 	int	i;
@@ -21,7 +24,7 @@ int		validation_number(char **argv)
 		j = -1;
 		while (argv[i][++j])
 			if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
-				return (400);
+				return (ERROR_DIGITS);
 	}
 	return (0);
 }
@@ -30,15 +33,19 @@ int		validation_duplicate(char **argv)
 {
 	int	i;
 	int	j;
-	int	k;
+    int first_number;
+    int second_number;
 
 	i = 0;
 	while (argv[++i])
 	{
-		j = i;
+        first_number = ft_atoi(argv[i]);
+        j = i;
 		while (argv[++j])
 		{
-
+            second_number = ft_atoi(argv[j]);
+            if (first_number == second_number)
+                return (ERROR_DUPLICATE);
 		}
 	}
 	return (0);

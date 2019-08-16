@@ -14,11 +14,22 @@
 # define PUSH_SWAP_H
 
 typedef struct		s_list{
-	int				n;
+	int		        data;
 	struct s_list	*next;
-}					t_list;
+}			        t_list;
 
-int					validation_number(char **argv);
-int					validation_duplicate(char **argv);
+int			        validation_number(char **argv);
+int			        validation_duplicate(char **argv);
+
+int                 push_swap_log(int e);
+int                 print(t_list *list);
+t_list              *create_stack(char **argv);
+t_list              *flag_sa(t_list *list_a);
+t_list              *flag_ra(t_list *list_a);
+
+/*
+ * Misc
+*/
+int                 ft_atoi(char *str);
 
 #endif

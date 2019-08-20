@@ -6,14 +6,14 @@
 /*   By: emedea <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 16:34:23 by emedea            #+#    #+#             */
-/*   Updated: 2019/08/15 16:51:07 by emedea           ###   ########.fr       */
+/*   Updated: 2019/08/20 18:41:26 by emedea           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../includes/errors.h"
 
-int		validation_number(char **argv)
+int		v_number(char **argv)
 {
 	int	i;
 	int	j;
@@ -24,12 +24,12 @@ int		validation_number(char **argv)
 		j = -1;
 		while (argv[i][++j])
 			if (!(argv[i][j] >= '0' && argv[i][j] <= '9'))
-				return (ERROR_DIGITS);
+				push_swap_log(ERROR_DIGITS);
 	}
 	return (0);
 }
 
-int		validation_duplicate(char **argv)
+int		v_duplicate(char **argv)
 {
 	int	i;
 	int	j;
@@ -45,7 +45,7 @@ int		validation_duplicate(char **argv)
 		{
             second_number = ft_atoi(argv[j]);
             if (first_number == second_number)
-                return (ERROR_DUPLICATE);
+                push_swap_log(ERROR_DUPLICATE);
 		}
 	}
 	return (0);

@@ -1,7 +1,7 @@
 #include "../includes/push_swap.h"
 #include <stdio.h>
 
-int     print(t_list *list)
+int     debug(t_list *list)
 {
     while (list)
     {

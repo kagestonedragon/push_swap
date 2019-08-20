@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-int     push_swap_log(int e)
+int	push_swap_log(int e)
 {
     if (e == ERROR_DIGITS)
         printf("Error: your input data doesn't correct.");

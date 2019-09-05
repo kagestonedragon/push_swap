@@ -5,50 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: emedea <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/15 16:30:44 by emedea            #+#    #+#             */
-/*   Updated: 2019/08/20 18:47:43 by emedea           ###   ########.fr       */
+/*   Created: 2019/09/05 14:25:21 by emedea            #+#    #+#             */
+/*   Updated: 2019/09/05 16:35:29 by emedea           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# define ERROR_DIGITS		1
-# define ERROR_DUPLICATE	2
-# define ERROR_MALLOC		100
 
-typedef struct				s_list{
-	int		        		data;
-	struct s_list			*next;
-}			        		t_list;
+typedef enum{
+	false,
+	true
+}		t_bool;
 
-/*
- * Operations
- */
-void						swap(t_list *list);
-void						rotate(t_list *list);
+typedef struct		s_list{
+	int				value;
+	int				index;
+	t_bool			keep;
+	struct s_list	*next;
+}					t_list;
 
-/*
- * Validation
- */
-int			        		validation_number(char **argv);
-int			        		validation_duplicate(char **argv);
+typedef struct		s_push_swap{
+	t_list			*stack_a;
+	t_list			*stack_b;
+}					t_push_swap;
 
-/*
- * List
- */
-t_list						*new_list(char **argv);
-void						delete(t_list *list);
-void						delete_all(t_list *list);
+/* VALIDATION */
+int					validation(int size, char **elements);
 
-/*
- * Errors
- */
-int              			push_swap_log(int e);
-int                 		print(t_list *list);
-
-/*
- * Misc
-*/
-int                 		ft_atoi(char *str);
+/* INITIALIZATION */
+t_push_swap			*initialization(int size, char **elements);
+t_list				*new_list(char **elements);
 
 #endif

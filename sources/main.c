@@ -5,20 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: emedea <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/15 16:32:40 by emedea            #+#    #+#             */
-/*   Updated: 2019/08/20 17:51:16 by emedea           ###   ########.fr       */
+/*   Created: 2019/09/05 16:15:07 by emedea            #+#    #+#             */
+/*   Updated: 2019/09/05 16:33:10 by emedea           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
-int			main(int argc, char **argv)
+int					main(int size, char **elements)
 {
-    t_list  *list;
+	t_push_swap		*p;
 
-    list = create_stack(argv);
-    rotate(list);
-    print(list);
+	p = initialization(size - 1, &elements[1]);
 	return (0);
 }

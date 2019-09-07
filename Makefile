@@ -19,8 +19,8 @@ SRC_OPERATIONS_PATH = sources/operations/
 SRC_VALIDATION_PATH = sources/validation/
 
 SRC_FILES = main.c 
-SRC_INITIALIZATION_FILES = initialization.c new_list.c 
-SRC_OPERATIONS_FILES = 
+SRC_INITIALIZATION_FILES = initialization.c new_list.c get_indexes.c 
+SRC_OPERATIONS_FILES = push.c swap.c rotate.c reverse_rotate.c 
 SRC_VALIDATION_FILES = validation.c 
 
 OBJ__CORE = $(addprefix $(OBJ_PATH), $(SRC_FILES:.c=.o))
@@ -33,8 +33,7 @@ OBJECTS = $(OBJ__CORE) $(OBJ_INITIALIZATION_CORE) $(OBJ_OPERATIONS_CORE) $(OBJ_V
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-		@($(AR) $(AR_FLAGS) $(NAME) $(OBJECTS))
-		@(ranlib $(NAME))
+		@($(GCC) $(GCC_FLAGS) -o $(NAME) $(OBJECTS))
 		@(echo $(NAME) "was created!")
 
 clean:

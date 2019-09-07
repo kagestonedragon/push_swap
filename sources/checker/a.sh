@@ -1,0 +1,1 @@
+gcc main.c -I ../../includes get_next_line.c ../main.c ../initialization/initialization.c ../initialization/new_list.c ../initialization/get_indexes.c ../operations/push.c ../operations/swap.c ../operations/rotate.c ../operations/reverse_rotate.c -L libft -lft

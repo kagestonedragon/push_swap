@@ -1,21 +1,27 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: emedea <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/05 16:38:54 by emedea            #+#    #+#             */
-/*   Updated: 2019/09/05 17:47:10 by emedea           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
-int			push_a(t_push_swap *p)
+int         push_b(t_push_swap *p)
 {
-	t_list	*temporary;
+    t_list  *temporary;
 
-	temporary = p->stack_a;
+    if (!p->stack_a)
+        return (0);
+    temporary = p->stack_a->next;
+    p->stack_a->next = p->stack_b;
+    p->stack_b = p->stack_a;
+    p->stack_a = temporary;
+    return (0);
+}
 
+int         push_a(t_push_swap *p)
+{
+    t_list  *temporary;
+
+    if (!p->stack_b)
+        return (0);
+    temporary = p->stack_b->next;
+    p->stack_b->next = p->stack_a;
+    p->stack_a = p->stack_b;
+    p->stack_b = temporary;
+    return (0);
 }

@@ -1,6 +1,5 @@
-#include "../includes/libft.h"
-#include "../includes/push_swap.h"
-#include <stdlib.h>
+#include "libft.h"
+#include "push_swap.h"
 
 static int      validation_duplicates(t_push_swap *p)
 {
@@ -49,8 +48,6 @@ int      		validation_correct_input(char *str)
 
 int             validation(t_push_swap *p)
 {
-	if (is_sorted(p))
-		exit(0);
     if (!p->size)
     	push_swap_log(ERROR_EMPTY);
     validation_duplicates(p);

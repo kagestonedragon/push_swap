@@ -1,7 +1,10 @@
 #include "push_swap.h"
+#include <stdlib.h>
 
 int         after_validation(t_push_swap *p)
 {
+	if (is_sorted(p))
+		exit(0);
     if (p->flags && p->flags->value == FLAG_VISUALIZATION)
     	p->w = create_window();
     algorithm(p);

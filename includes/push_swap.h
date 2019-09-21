@@ -20,6 +20,7 @@
 # define OP_SWAP                260
 
 # define FLAG_VISUALIZATION     400
+# define FLAG_TOTAL				410
 # define ABS(x) ((x) > 0 ? (x) : (-x))
 # include "structures.h"
 

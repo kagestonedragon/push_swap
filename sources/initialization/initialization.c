@@ -1,6 +1,5 @@
 #include "push_swap.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 static int		max(t_list *stack)
 {
@@ -21,10 +20,12 @@ static int		max(t_list *stack)
 static t_list	*get_flags(char **argv)
 {
 	t_list  	*flags;
-	
+
 	flags = NULL;
 	if (argv[0][0] == '-' && argv[0][1] == 'v')
 		flags = create_list(FLAG_VISUALIZATION);
+	else if (argv[0][0] == '-' && argv[0][1] == 'n')
+		flags = create_list(FLAG_TOTAL);
 	return (flags);
 }
 

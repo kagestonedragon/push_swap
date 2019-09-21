@@ -13,6 +13,7 @@ add_executable(clion_push_swap
         includes/push_swap.h
         includes/structures.h
         includes/visualization.h
+        checker/main.c
         sources/algorithm/add_operation.c
         sources/algorithm/algorithm.c
         sources/algorithm/mediana_search.c

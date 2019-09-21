@@ -1,4 +1,4 @@
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 static int  compare_elements_b(t_list *stack_b, int mediana, int amount)
 {

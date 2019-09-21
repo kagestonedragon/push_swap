@@ -39,6 +39,7 @@ SOURCES_ERRORS_FILES = \
 SOURCES_FREE_FILES = \
 		push_swap_free.c 
 SOURCES_INITIALIZATION_FILES = \
+		get_elements.c \
 		initialization.c \
 		new_list.c 
 SOURCES_OPERATIONS_FILES = \
@@ -47,12 +48,12 @@ SOURCES_OPERATIONS_FILES = \
 		rotate.c \
 		swap.c 
 SOURCES_VALIDATION_FILES = \
-		validation.c \
-		after_validation.c
+		after_validation.c \
+		validation.c 
 SOURCES_VISUALIZATION_FILES = \
+		_drawing.c \
 		create_window.c \
 		drawing.c \
-		_drawing.c \
 		utils.c 
 
 OBJ_SOURCES_CORE = $(addprefix $(OBJ_PATH), $(SOURCES_FILES:.c=.o))

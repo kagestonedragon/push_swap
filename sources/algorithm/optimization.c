@@ -1,4 +1,4 @@
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 #include <stdlib.h>
 
 static int      get_solution(t_list *o)

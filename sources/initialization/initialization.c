@@ -1,7 +1,8 @@
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 #include <stdlib.h>
+#include <stdio.h>
 
-int             max(t_list *stack)
+static int		max(t_list *stack)
 {
     t_list      *temporary_a;
     int         temporary;
@@ -17,19 +18,30 @@ int             max(t_list *stack)
     return (temporary);
 }
 
-t_push_swap     *initialization(int size, char **elements)
+static t_list	*get_flags(char **argv)
+{
+	t_list  	*flags;
+	
+	flags = NULL;
+	if (argv[0][0] == '-' && argv[0][1] == 'v')
+		flags = create_list(FLAG_VISUALIZATION);
+	return (flags);
+}
+
+t_push_swap     *initialization(char **elements)
 {
     t_push_swap *p;
-
-    (void)size;
+    
     p = (t_push_swap *)malloc(sizeof(t_push_swap));
-    p->stack_a = new_list(elements);
+    p->flags = get_flags(elements);
+    p->size = 0;
+    p->elem = collect_elements(p->flags ? &elements[1] : &elements[0]);
+    p->stack_a = new_list(p);
     p->max_value = max(p->stack_a);
     p->w = NULL;
     p->stack_b = NULL;
     p->operations = NULL;
-    p->size = size;
-    p->size_a = size;
+    p->size_a = p->size;
     p->size_b = 0;
     return (p);
 }

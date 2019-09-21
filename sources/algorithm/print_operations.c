@@ -1,6 +1,6 @@
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
+#include "mlx.h"
 #include <unistd.h>
-#include <stdlib.h>
 
 static int  get_operation(int operation)
 {
@@ -29,10 +29,10 @@ static int  get_operation(int operation)
     return (0);
 }
 
-int         create_visual_stack_a(t_push_swap *p, char **elements)
+int         create_visual_stack_a(t_push_swap *p)
 {
     list_free(p->stack_a);
-    p->stack_a = new_list(elements);
+    p->stack_a = new_list(p);
     return (0);
 }
 
@@ -42,16 +42,17 @@ int         print_operations(t_push_swap *p)
 
     temporary = p->operations;
     if (p->flags && p->flags->value == FLAG_VISUALIZATION)
-    { 
+    {
         draw_stacks(p);
         while (temporary)
         {
             do_operation(p, temporary->value);
-            get_operation(temporary->value);
+            
             p->w->operation = temporary->value;
             draw_stacks(p);
             temporary = temporary->next;
         }
+        mlx_loop(p->w->mlx);
     }
     else
     {

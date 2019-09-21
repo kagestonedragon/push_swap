@@ -1,4 +1,4 @@
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 #include <stdlib.h>
 
 int         rotate_a(t_push_swap *p)

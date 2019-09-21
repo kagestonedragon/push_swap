@@ -1,4 +1,4 @@
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 static t_list   *create_temporary_list(t_list *stack)
 {
@@ -73,8 +73,7 @@ int             mediana_stack_a(t_push_swap *p, int size)
     t_list      *temporary;
     t_list      *_list;
     int         result;
-
-    result = 0;
+    
     temporary = create_temporary_list(p->stack_a);
     _list = temporary;
     sorting_asc(temporary);
@@ -82,8 +81,8 @@ int             mediana_stack_a(t_push_swap *p, int size)
     while (++i < size / 2)
         temporary = temporary->next;
     result = temporary->value;
-    //list_free(_list);
-    return (result); 
+    list_free(_list);
+    return (result);
 }
 
 int             mediana_stack_b(t_push_swap *p, int size)
@@ -92,8 +91,7 @@ int             mediana_stack_b(t_push_swap *p, int size)
     t_list      *temporary;
     t_list      *_list;
     int         result;
-
-    result = 0;
+    
     temporary = create_temporary_list(p->stack_b);
     _list = temporary;
     sorting_desc(temporary);
@@ -101,6 +99,6 @@ int             mediana_stack_b(t_push_swap *p, int size)
     while (++i < size / 2)
         temporary = temporary->next;
     result = temporary->value;
-    //list_free(_list);
+    list_free(_list);
     return (result);
 }

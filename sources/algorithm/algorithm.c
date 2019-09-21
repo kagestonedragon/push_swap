@@ -1,4 +1,4 @@
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 int         algorithm(t_push_swap *p)
 {

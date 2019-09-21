@@ -1,67 +1,58 @@
 #include "../includes/libft.h"
 #include "../includes/push_swap.h"
+#include <stdlib.h>
 
-static int      validation_duplicates(int size, char **elements)
+static int      validation_duplicates(t_push_swap *p)
 {
-    int         i;
-    int         j;
-    int         temporary;
-
-    i = -1;
-    while (++i < size)
-    {
-        temporary = ft_atoi(elements[i]);
-        j = i;
-        while (++j < size)
-            if (temporary == ft_atoi(elements[j]))
-                push_swap_log(ERROR_DUPLICATE);
-    }
+	t_list		*temporary_1;
+	t_list		*temporary_2;
+	
+	temporary_1 = p->stack_a;
+	while (temporary_1)
+	{
+		temporary_2 = temporary_1;
+		while ((temporary_2 = temporary_2->next))
+		{
+			if (temporary_1->value == temporary_2->value)
+				push_swap_log(ERROR_DUPLICATE);
+		}
+		temporary_1 = temporary_1->next;
+	}
     return (0);
 }
 
-static int      validation_integer_limits(int size, char **elements)
+int      		validation_integer_limits(char *str)
 {
-    int         i;
-
-    i = 0;
-    while (++i < size)
-    {
-        if (ft_strlen(elements[i]) >= 10 && elements[i][0] != '-')
-            if (ft_strcmp("2147483647", elements[i]) < 0)
-                push_swap_log(ERROR_BIG);
-        if (ft_strlen(elements[i]) >= 11 && elements[i][0] == '-')
-            if (ft_strcmp("-2147483648", elements[i]) < 0)
-                push_swap_log(ERROR_BIG);
-    }
+	if (ft_strlen(str) >= 10 && str[0] != '-')
+		if (ft_strcmp("2147483647", str) < 0)
+			push_swap_log(ERROR_BIG);
+	if (ft_strlen(str) >= 11 && str[0] == '-')
+		if (ft_strcmp("-2147483648", str) < 0)
+			push_swap_log(ERROR_BIG);
     return (0);
 }
 
-static int      validation_correct_input(int size, char **elements)
+int      		validation_correct_input(char *str)
 {
-    int         i;
-    int         j;
-
-    i = -1;
-    while (++i < size)
-    {
-        j = -1;
-        while (elements[i][++j])
-        {
-            if (elements[i][j] == '-' || elements[i][j] == '+')
-                j++;
-            if (!(elements[i][j] >= '0' && elements[i][j] <= '9'))
-                push_swap_log(ERROR_INPUT);    
-        }
-    }
+	int 		i;
+	
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] == '-' || str[i] == '+')
+			i++;
+		if (!(str[i] >= '0' && str[i] <= '9'))
+			push_swap_log(ERROR_INPUT);
+	}
     return (0);
 }
 
-int             validation(int size, char **elements)
+int             validation(t_push_swap *p)
 {
-    if (!size)
-        push_swap_log(ERROR_EMPTY);
-    validation_integer_limits(size, elements);
-    validation_duplicates(size, elements);
-    validation_correct_input(size, elements);
+	if (is_sorted(p))
+		exit(0);
+    if (!p->size)
+    	push_swap_log(ERROR_EMPTY);
+    validation_duplicates(p);
     return (0);
 }

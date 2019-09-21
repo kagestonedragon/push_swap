@@ -1,6 +1,7 @@
-#include "../../includes/push_swap.h"
-#include "../../includes/libft.h"
+#include "push_swap.h"
+#include "libft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 t_list              *new_element(t_list *list, int value)
 {
@@ -22,21 +23,25 @@ t_list              *create_list(int value)
     return (list);
 }
 
-t_list              *new_list(char **elements)
-{
-    int             i;
-    t_list          *list;
-    t_list          *_list;
 
-    if (!elements[0])
-        return (NULL);
-    list = create_list(atoi(elements[0]));
+t_list              *new_list(t_push_swap *p)
+{
+    t_list          *list;
+    t_list			*_list;
+    t_element		*temporary;
+
+    if (!p->elem)
+    	return (NULL);
+    temporary = p->elem;
+    list = create_list(ft_atoi(temporary->value));
+    p->size += 1;
     _list = list;
-    i = 0;
-    while (elements[++i])
-    {
-        list->next = new_element(list, ft_atoi(elements[i]));
+    while ((temporary = temporary->next))
+	{
+    	p->size += 1;
+        list->next = new_element(list, ft_atoi(temporary->value));
         list = list->next;
     }
+    //test_int(_list);
     return (_list);
 }

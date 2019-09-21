@@ -1,4 +1,4 @@
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 int         is_sorted(t_push_swap *p)
 {
@@ -28,6 +28,8 @@ int         get_last_element(t_push_swap *p)
 
 int     primitive_sorting(t_push_swap *p)
 {
+	if (p->size_a == 1)
+		return (0);
     while (!is_sorted(p) && p->size_a <= 3)
     {
         if (p->stack_a->value > p->stack_a->next->value)

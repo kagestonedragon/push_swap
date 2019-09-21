@@ -1,6 +1,6 @@
-#include "../../includes/push_swap.h"
-#include "../../includes/mlx.h"
-#include "../../includes/libft.h"
+#include "push_swap.h"
+#include "mlx.h"
+#include "libft.h"
 #include <stdlib.h>
 
 int             pixel_put(t_window *w, int x, int y, int color)

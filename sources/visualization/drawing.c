@@ -1,5 +1,5 @@
-#include "../../includes/push_swap.h"
-#include "../../includes/libft.h"
+#include "push_swap.h"
+#include "libft.h"
 
 static int      get_width(int max, int current)
 {

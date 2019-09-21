@@ -20,7 +20,6 @@
 # define OP_SWAP                260
 
 # define FLAG_VISUALIZATION     400
-
 # define ABS(x) ((x) > 0 ? (x) : (-x))
 # include "structures.h"
 
@@ -31,23 +30,24 @@
 ** VISUALIZATION
 */
 t_window                        *create_window(void);
-int                             visualization_loop(t_push_swap *p);
 int                             draw_stack_a(t_push_swap *p);
 int                             draw_stack_b(t_push_swap *p);
 int                             draw_background(t_push_swap *p);
 int                             pixel_put(t_window *w, int x, int y, int color);
 int                             draw_stacks(t_push_swap *p);
+int  							close_window(int key, void *param);
 
 /*
 ** INITIAlIZAION
 */
-t_push_swap                     *initialization(int size, char **elements);
-t_list                          *new_list(char **elements);
+t_push_swap                     *initialization(char **elements);
+t_list                          *new_list(t_push_swap *p);
+t_element						*collect_elements(char **elements);
 t_list                          *create_list(int value);
 t_list                          *new_element(t_list *list, int value);
 int                             push_swap_free(t_push_swap *p);
 int                             list_free(t_list *list);
-int                             create_visual_stack_a(t_push_swap *p, char **elements);
+int                             create_visual_stack_a(t_push_swap *p);
 int                             do_operation(t_push_swap *p, int operation);
 
 /*
@@ -84,9 +84,10 @@ int                             swap(t_push_swap *p);
 /*
 ** VALIDATION
 */
-int                             validation(int size, char **elements);
-int                             after_validation(t_push_swap *p, int elements, int argc, char **argv);
-t_list                          *get_flags(int argc, char **argv);
+int                             validation(t_push_swap *p);
+int      						validation_integer_limits(char *str);
+int      						validation_correct_input(char *str);
+int                             after_validation(t_push_swap *p);
 
 /*
 ** ERROR HANDLES

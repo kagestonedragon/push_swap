@@ -50,3 +50,29 @@ int     primitive_sorting(t_push_swap *p)
     }
     return (0);
 }
+
+int         primitive_sorting_a(t_push_swap *p)
+{
+    (p->size_a > 1 && p->stack_a->value > p->stack_a->next->value) ? add_operation(p, OP_SWAP_A) : 0;
+    if (p->size_a > 2 && p->stack_a->next->value > p->stack_a->next->next->value)
+    {
+        add_operation(p, OP_ROTATE_A);
+        add_operation(p, OP_SWAP_A);
+        add_operation(p, OP_R_ROTATE_A);
+    }
+    (p->size_a > 1 && p->stack_a->value > p->stack_a->next->value) ? add_operation(p, OP_SWAP_A) : 0;
+    return (0);
+}
+
+int         primitive_sorting_b(t_push_swap *p)
+{ 
+    (p->size_b > 1 && p->stack_b->value < p->stack_b->next->value) ? add_operation(p, OP_SWAP_B) : 0;
+    if (p->size_b > 2 && p->stack_b->next->value < p->stack_b->next->next->value)
+    {
+        add_operation(p, OP_ROTATE_B);
+        add_operation(p, OP_SWAP_B);
+        add_operation(p, OP_R_ROTATE_B);
+    }
+    (p->size_b > 1 && p->stack_b->value < p->stack_b->next->value) ? add_operation(p, OP_SWAP_B) : 0;
+    return (0);
+}

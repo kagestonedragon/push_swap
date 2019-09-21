@@ -4,7 +4,7 @@
 #@    https://github.com/kagestonedragon/auto_make    @#
 ########################################################
 
-NAME = push_swap_ex
+NAME = push_swap
 
 GCC = gcc
 
@@ -14,48 +14,62 @@ OBJ_PATH = objects/
 
 INCLUDES_INCLUDE = includes/
 
-PUSH_SWAP_PATH = push_swap/
-PUSH_SWAP_ALGORITHM_PATH = push_swap/algorithm/
-PUSH_SWAP_ERRORS_PATH = push_swap/errors/
-PUSH_SWAP_INITIALIZATION_PATH = push_swap/initialization/
-PUSH_SWAP_OPERATIONS_PATH = push_swap/operations/
-PUSH_SWAP_VALIDATION_PATH = push_swap/validation/
+SOURCES_PATH = sources/
+SOURCES_ALGORITHM_PATH = sources/algorithm/
+SOURCES_ERRORS_PATH = sources/errors/
+SOURCES_FREE_PATH = sources/free/
+SOURCES_INITIALIZATION_PATH = sources/initialization/
+SOURCES_OPERATIONS_PATH = sources/operations/
+SOURCES_VALIDATION_PATH = sources/validation/
+SOURCES_VISUALIZATION_PATH = sources/visualization/
 
-PUSH_SWAP_FILES = \
+SOURCES_FILES = \
 		main.c 
-PUSH_SWAP_ALGORITHM_FILES = \
+SOURCES_ALGORITHM_FILES = \
 		add_operation.c \
 		algorithm.c \
 		mediana_search.c \
+		optimization.c \
 		primitive_sorting.c \
 		print_operations.c \
-		optimization.c
-PUSH_SWAP_ERRORS_FILES = \
+		sorting_stack_a.c \
+		sorting_stack_b.c 
+SOURCES_ERRORS_FILES = \
 		push_swap_log.c 
-PUSH_SWAP_INITIALIZATION_FILES = \
+SOURCES_FREE_FILES = \
+		push_swap_free.c 
+SOURCES_INITIALIZATION_FILES = \
 		initialization.c \
 		new_list.c 
-PUSH_SWAP_OPERATIONS_FILES = \
+SOURCES_OPERATIONS_FILES = \
 		push.c \
 		reverse_rotate.c \
 		rotate.c \
 		swap.c 
-PUSH_SWAP_VALIDATION_FILES = \
-		validation.c 
+SOURCES_VALIDATION_FILES = \
+		validation.c \
+		after_validation.c
+SOURCES_VISUALIZATION_FILES = \
+		create_window.c \
+		drawing.c \
+		_drawing.c \
+		utils.c 
 
-OBJ_PUSH_SWAP_CORE = $(addprefix $(OBJ_PATH), $(PUSH_SWAP_FILES:.c=.o))
-OBJ_PUSH_SWAP_ALGORITHM_CORE = $(addprefix $(OBJ_PATH), $(PUSH_SWAP_ALGORITHM_FILES:.c=.o))
-OBJ_PUSH_SWAP_ERRORS_CORE = $(addprefix $(OBJ_PATH), $(PUSH_SWAP_ERRORS_FILES:.c=.o))
-OBJ_PUSH_SWAP_INITIALIZATION_CORE = $(addprefix $(OBJ_PATH), $(PUSH_SWAP_INITIALIZATION_FILES:.c=.o))
-OBJ_PUSH_SWAP_OPERATIONS_CORE = $(addprefix $(OBJ_PATH), $(PUSH_SWAP_OPERATIONS_FILES:.c=.o))
-OBJ_PUSH_SWAP_VALIDATION_CORE = $(addprefix $(OBJ_PATH), $(PUSH_SWAP_VALIDATION_FILES:.c=.o))
+OBJ_SOURCES_CORE = $(addprefix $(OBJ_PATH), $(SOURCES_FILES:.c=.o))
+OBJ_SOURCES_ALGORITHM_CORE = $(addprefix $(OBJ_PATH), $(SOURCES_ALGORITHM_FILES:.c=.o))
+OBJ_SOURCES_ERRORS_CORE = $(addprefix $(OBJ_PATH), $(SOURCES_ERRORS_FILES:.c=.o))
+OBJ_SOURCES_FREE_CORE = $(addprefix $(OBJ_PATH), $(SOURCES_FREE_FILES:.c=.o))
+OBJ_SOURCES_INITIALIZATION_CORE = $(addprefix $(OBJ_PATH), $(SOURCES_INITIALIZATION_FILES:.c=.o))
+OBJ_SOURCES_OPERATIONS_CORE = $(addprefix $(OBJ_PATH), $(SOURCES_OPERATIONS_FILES:.c=.o))
+OBJ_SOURCES_VALIDATION_CORE = $(addprefix $(OBJ_PATH), $(SOURCES_VALIDATION_FILES:.c=.o))
+OBJ_SOURCES_VISUALIZATION_CORE = $(addprefix $(OBJ_PATH), $(SOURCES_VISUALIZATION_FILES:.c=.o))
 
-OBJECTS = $(OBJ_PUSH_SWAP_CORE) $(OBJ_PUSH_SWAP_ALGORITHM_CORE) $(OBJ_PUSH_SWAP_ERRORS_CORE) $(OBJ_PUSH_SWAP_INITIALIZATION_CORE) $(OBJ_PUSH_SWAP_OPERATIONS_CORE) $(OBJ_PUSH_SWAP_VALIDATION_CORE) 
+OBJECTS = $(OBJ_SOURCES_CORE) $(OBJ_SOURCES_ALGORITHM_CORE) $(OBJ_SOURCES_ERRORS_CORE) $(OBJ_SOURCES_FREE_CORE) $(OBJ_SOURCES_INITIALIZATION_CORE) $(OBJ_SOURCES_OPERATIONS_CORE) $(OBJ_SOURCES_VALIDATION_CORE) $(OBJ_SOURCES_VISUALIZATION_CORE) 
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-		@($(GCC) $(GCC_FLAGS) $(OBJECTS) -o $(NAME) -L libraries -lft)
+		@($(GCC) $(GCC_FLAGS) $(OBJECTS) -o $(NAME) -L libraries -lft -L libraries -lmlx -framework OpenGL -framework AppKIt)
 		@(echo "[0;92m"$(NAME) "was created![0;0m")
 
 clean:
@@ -71,26 +85,34 @@ re: fclean all
 objects:
 		@(mkdir $(OBJ_PATH))
 
-objects/%.o: $(PUSH_SWAP_PATH)%.c | objects
+objects/%.o: $(SOURCES_PATH)%.c | objects
 		@($(GCC) $(GCC_FLAGS) -I $(INCLUDES_INCLUDE) -c $< -o $@)
 		@(echo "[0;93m"$< "->" $@"[0;0m")
 
-objects/%.o: $(PUSH_SWAP_ALGORITHM_PATH)%.c | objects
+objects/%.o: $(SOURCES_ALGORITHM_PATH)%.c | objects
 		@($(GCC) $(GCC_FLAGS) -I $(INCLUDES_INCLUDE) -c $< -o $@)
 		@(echo "[0;93m"$< "->" $@"[0;0m")
 
-objects/%.o: $(PUSH_SWAP_ERRORS_PATH)%.c | objects
+objects/%.o: $(SOURCES_ERRORS_PATH)%.c | objects
 		@($(GCC) $(GCC_FLAGS) -I $(INCLUDES_INCLUDE) -c $< -o $@)
 		@(echo "[0;93m"$< "->" $@"[0;0m")
 
-objects/%.o: $(PUSH_SWAP_INITIALIZATION_PATH)%.c | objects
+objects/%.o: $(SOURCES_FREE_PATH)%.c | objects
 		@($(GCC) $(GCC_FLAGS) -I $(INCLUDES_INCLUDE) -c $< -o $@)
 		@(echo "[0;93m"$< "->" $@"[0;0m")
 
-objects/%.o: $(PUSH_SWAP_OPERATIONS_PATH)%.c | objects
+objects/%.o: $(SOURCES_INITIALIZATION_PATH)%.c | objects
 		@($(GCC) $(GCC_FLAGS) -I $(INCLUDES_INCLUDE) -c $< -o $@)
 		@(echo "[0;93m"$< "->" $@"[0;0m")
 
-objects/%.o: $(PUSH_SWAP_VALIDATION_PATH)%.c | objects
+objects/%.o: $(SOURCES_OPERATIONS_PATH)%.c | objects
+		@($(GCC) $(GCC_FLAGS) -I $(INCLUDES_INCLUDE) -c $< -o $@)
+		@(echo "[0;93m"$< "->" $@"[0;0m")
+
+objects/%.o: $(SOURCES_VALIDATION_PATH)%.c | objects
+		@($(GCC) $(GCC_FLAGS) -I $(INCLUDES_INCLUDE) -c $< -o $@)
+		@(echo "[0;93m"$< "->" $@"[0;0m")
+
+objects/%.o: $(SOURCES_VISUALIZATION_PATH)%.c | objects
 		@($(GCC) $(GCC_FLAGS) -I $(INCLUDES_INCLUDE) -c $< -o $@)
 		@(echo "[0;93m"$< "->" $@"[0;0m")

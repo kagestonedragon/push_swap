@@ -1,15 +1,12 @@
 #include "../../includes/push_swap.h"
 #include <stdio.h>
 
-static int  do_operation(t_push_swap *p, int operation)
+int         do_operation(t_push_swap *p, int operation)
 {
     if (operation == OP_PUSH_A)
         push_a(p);
     else if (operation == OP_PUSH_B)
-    {
         push_b(p);
-        //debug_a(p);
-    }
     else if (operation == OP_R_ROTATE_A)
         reverse_rotate_a(p);
     else if (operation == OP_R_ROTATE_B)
@@ -17,10 +14,7 @@ static int  do_operation(t_push_swap *p, int operation)
     else if (operation == OP_R_ROTATE)
         reverse_rotate(p);
     else if (operation == OP_ROTATE_A)
-    {
         rotate_a(p);
-        //debug_a(p);
-    }
     else if (operation == OP_ROTATE_B)
         rotate_b(p);
     else if (operation == OP_ROTATE)
@@ -30,7 +24,7 @@ static int  do_operation(t_push_swap *p, int operation)
     else if (operation == OP_SWAP_B)
         swap_b(p);
     else if (operation == OP_SWAP)
-        swap(p);
+        swap(p); 
     return (0);
 }
 

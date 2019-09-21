@@ -71,24 +71,36 @@ int             mediana_stack_a(t_push_swap *p, int size)
 {
     int         i;
     t_list      *temporary;
+    t_list      *_list;
+    int         result;
 
+    result = 0;
     temporary = create_temporary_list(p->stack_a);
+    _list = temporary;
     sorting_asc(temporary);
     i = -1;
     while (++i < size / 2)
         temporary = temporary->next;
-    return (temporary->value); 
+    result = temporary->value;
+    //list_free(_list);
+    return (result); 
 }
 
 int             mediana_stack_b(t_push_swap *p, int size)
 {
     int         i;
     t_list      *temporary;
+    t_list      *_list;
+    int         result;
 
+    result = 0;
     temporary = create_temporary_list(p->stack_b);
+    _list = temporary;
     sorting_desc(temporary);
     i = -1;
     while (++i < size / 2)
         temporary = temporary->next;
-    return (temporary->value);
+    result = temporary->value;
+    //list_free(_list);
+    return (result);
 }

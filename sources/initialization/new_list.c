@@ -28,6 +28,8 @@ t_list              *new_list(char **elements)
     t_list          *list;
     t_list          *_list;
 
+    if (!elements[0])
+        return (NULL);
     list = create_list(atoi(elements[0]));
     _list = list;
     i = 0;

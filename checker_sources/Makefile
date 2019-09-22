@@ -68,7 +68,7 @@ clean:
 		@(echo "[0;91mAll object files have been deleted![0;0m")
 
 fclean: clean
-		@(/bin/rm -f $(NAME))
+		@(/bin/rm -f ../$(NAME))
 		@(echo "[0;91m"$(NAME) "has been deleted![0;0m")
 
 re: fclean all

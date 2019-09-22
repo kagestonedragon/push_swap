@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emedea <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/22 16:49:34 by emedea            #+#    #+#             */
+/*   Updated: 2019/09/22 16:49:35 by emedea           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 #include "mlx.h"
 #include <stdlib.h>
 
-int  close_window(int key, void *param)
+int	close_window(int key, void *param)
 {
-    (void)param;
+	(void)param;
 	(void)key;
-    exit(0);
+	exit(0);
 }

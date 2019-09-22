@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validation.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emedea <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/22 16:42:49 by emedea            #+#    #+#             */
+/*   Updated: 2019/09/22 16:43:56 by emedea           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "push_swap.h"
 
-static int      validation_duplicates(t_push_swap *p)
+static int		validation_duplicates(t_push_swap *p)
 {
 	t_list		*temporary_1;
 	t_list		*temporary_2;
-	
+
 	temporary_1 = p->stack_a;
 	while (temporary_1)
 	{
@@ -17,10 +29,10 @@ static int      validation_duplicates(t_push_swap *p)
 		}
 		temporary_1 = temporary_1->next;
 	}
-    return (0);
+	return (0);
 }
 
-int      		validation_integer_limits(char *str)
+int				validation_integer_limits(char *str)
 {
 	if (ft_strlen(str) >= 10 && str[0] != '-')
 		if (ft_strcmp("2147483647", str) < 0)
@@ -28,13 +40,13 @@ int      		validation_integer_limits(char *str)
 	if (ft_strlen(str) >= 11 && str[0] == '-')
 		if (ft_strcmp("-2147483648", str) < 0)
 			push_swap_log(ERROR_BIG);
-    return (0);
+	return (0);
 }
 
-int      		validation_correct_input(char *str)
+int				validation_correct_input(char *str)
 {
-	int 		i;
-	
+	int			i;
+
 	i = -1;
 	while (str[++i])
 	{
@@ -43,13 +55,13 @@ int      		validation_correct_input(char *str)
 		if (!(str[i] >= '0' && str[i] <= '9'))
 			push_swap_log(ERROR_INPUT);
 	}
-    return (0);
+	return (0);
 }
 
-int             validation(t_push_swap *p)
+int				validation(t_push_swap *p)
 {
-    if (!p->size)
-    	push_swap_log(ERROR_EMPTY);
-    validation_duplicates(p);
-    return (0);
+	if (!p->size)
+		push_swap_log(ERROR_EMPTY);
+	validation_duplicates(p);
+	return (0);
 }

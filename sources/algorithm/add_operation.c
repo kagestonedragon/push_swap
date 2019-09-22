@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   add_operation.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emedea <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/22 16:20:52 by emedea            #+#    #+#             */
+/*   Updated: 2019/09/22 16:20:56 by emedea           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int			do_operation(t_push_swap *p, int operation)
@@ -27,9 +39,9 @@ int			do_operation(t_push_swap *p, int operation)
 	return (0);
 }
 
-int         add_operation(t_push_swap *p, int operation)
+int			add_operation(t_push_swap *p, int operation)
 {
-	t_list  *temporary;
+	t_list	*temporary;
 
 	if (p->operations)
 	{

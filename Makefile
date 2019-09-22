@@ -51,7 +51,7 @@ SOURCES_VALIDATION_FILES = \
 		after_validation.c \
 		validation.c 
 SOURCES_VISUALIZATION_FILES = \
-		_drawing.c \
+		b_drawing.c \
 		create_window.c \
 		drawing.c \
 		utils.c 
@@ -76,12 +76,12 @@ $(NAME): $(OBJECTS)
 		@(echo "[0;92m"$(NAME) "was created![0;0m")
 
 clean:
-		@(/bin/rm -rf checker_sources/$(OBJ_PATH))
+		@(make -C checker_sources clean)
 		@(/bin/rm -rf $(OBJ_PATH))
 		@(echo "[0;91mAll object files have been deleted![0;0m")
 
 fclean: clean
-		@(/bin/rm -f checker)
+		@(make -C checker_sources fclean)
 		@(/bin/rm -f $(NAME))
 		@(echo "[0;91m"$(NAME) "has been deleted![0;0m")
 

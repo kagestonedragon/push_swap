@@ -3,7 +3,7 @@
 The Push_swap project is a highly effective algorithm project: data will need to be sorted. 
 You have at your disposal a set of int values, 2 stacks and a set of instructions to manipulate both stacks.
 
-<p align="center">
+<p align="left">
   <img src="/images/push_swap-visualization.gif" width="50%" alt="push_swap-visualization"/>
 </p>
 
@@ -44,7 +44,7 @@ ARG = "..."
 ./push_swap $ARG | ./checker $ARG
 ```
 * `-v` — will show the state of the stack after each operation
-* `-v` — will show the number of operations
+* `-n` — will show the number of operations
 
 <p align="center">
   <img src="/images/checker-visualization.png" width="100%" alt="push_swap-visualization"/>

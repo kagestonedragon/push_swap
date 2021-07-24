@@ -1,5 +1,7 @@
 # push_swap
 
+`Проект реализовывался в рамках обучения в "Школе 21". Алгоритмическая задача на сортировку последовательности чисел с использованием минимального количества операций между двуми стеками.`
+
 The Push_swap project is a highly effective algorithm project: data will need to be sorted. 
 You have at your disposal a set of int values, 2 stacks and a set of instructions to manipulate both stacks.
 
